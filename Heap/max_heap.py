@@ -48,7 +48,7 @@ class Heap(object):
         if right_child >= len(self.array):
             return left_child
 
-        return left_child if self.array[left_child] < self.array[right_child] else right_child
+        return left_child if self.array[left_child] > self.array[right_child] else right_child
 
     def pop(self):
         pop_value = self.array[0]
