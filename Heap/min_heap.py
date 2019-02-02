@@ -58,7 +58,7 @@ class Heap(object):
             r_i = self.find_child(n_i)
             if r_i == -1:
                 break
-            if self.array[n_i] < self.array[r_i]:
+            if self.array[n_i] > self.array[r_i]:
                 self.array[n_i], self.array[r_i] = self.array[r_i], self.array[n_i]
                 n_i = r_i
             else:
