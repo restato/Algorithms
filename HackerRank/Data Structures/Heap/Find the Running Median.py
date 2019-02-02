@@ -125,22 +125,22 @@ class Max_Heap(object):
                 break
         return pop_value
 
-def median(lower, upper):
+def median(upper, lower):
     if len(lower) == len(upper):
         return (float(lower[0]) + float(upper[0]))/2.0
-    elif len(lower) > len(upper):
-        return float(lower[0])
-    else:
+    elif len(upper) > len(lower):
         return float(upper[0])
+    else:
+        return float(lower[0])
 
 def balance(min_heap, max_heap):
-    lower = min_heap.array
-    upper = max_heap.array
+    upper = min_heap.array
+    lower = max_heap.array
     if abs(len(upper) - len(lower)) >= 2:
         if len(lower) < len(upper):
-            min_heap.insert(max_heap.pop())
-        else:
             max_heap.insert(min_heap.pop())
+        else:
+            min_heap.insert(max_heap.pop())
 
 #
 # Complete the runningMedian function below.
@@ -153,14 +153,17 @@ def runningMedian(a):
     min_heap = Min_Heap() 
     max_heap = Max_Heap()
     
+    lower = max_heap.array
+    upper = min_heap.array
+    
     for value in a:
         print (value)
-        if (len(max_heap.array) == 0) or (value < max_heap.array[0]):
+        if (len(lower) == 0) or (value < lower[0]):
             max_heap.insert(value)
         else:
             min_heap.insert(value)
         balance(min_heap, max_heap)
-        result.append(median(min_heap.array, max_heap.array))
+        result.append(median(upper, lower))
     return result
 
 if __name__ == '__main__':
