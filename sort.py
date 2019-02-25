@@ -1,13 +1,10 @@
 # encoding: utf-8
 
-def quick_sort(arr):
-   return quick_sort_helper(arr, 0, len(arr)-1)
-
-def quick_sort_helper(arr,first,last):
+def quick_sort(arr,first,last):
     if first<last:
        splitpoint = partition(arr,first,last)
-       quick_sort_helper(arr,first,splitpoint-1)
-       quick_sort_helper(arr,splitpoint+1,last)
+       quick_sort(arr,first,splitpoint-1)
+       quick_sort(arr,splitpoint+1,last)
     return arr
 
 def partition(arr,first,last):
@@ -16,27 +13,18 @@ def partition(arr,first,last):
    leftmark = first+1
    rightmark = last
 
-   done = False
-   while not done:
+   while not rightmark < leftmark:
 
        while leftmark <= rightmark and arr[leftmark] <= pivotvalue:
            leftmark = leftmark + 1
-
        while arr[rightmark] >= pivotvalue and rightmark >= leftmark:
            rightmark = rightmark -1
 
-       if rightmark < leftmark:
-           done = True
        else:
-           temp = arr[leftmark]
-           arr[leftmark] = arr[rightmark]
-           arr[rightmark] = temp
+           arr[leftmark], arr[rightmark] = arr[rightmark], arr[leftmark]
 
-   temp = arr[first]
-   arr[first] = arr[rightmark]
-   arr[rightmark] = temp
+   arr[first], arr[rightmark] = arr[rightmark], arr[first]
    return rightmark
-
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
