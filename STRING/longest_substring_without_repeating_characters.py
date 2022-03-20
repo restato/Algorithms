@@ -33,7 +33,7 @@ class Solution:
             # start <= used[s[i]]:
             # start: max_length를 계산할때 시작하는 index (=반복된적 없었던 단어의 시작 index)
             # used[s[i]]: 이전에 등장했던 char
-            if s[i] in used: and start <= used[s[i]]: # 🔑
+            if s[i] in used and start <= used[s[i]]: # 🔑
                 print(f'start: {start} used[s[i]]: {used[s[i]]}')
                 start = used[s[i]] + 1 # 이전에 등장했으면 시작을 다음으로 변경
             else:
