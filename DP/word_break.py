@@ -18,4 +18,4 @@ class Solution(object):
                     if s[i:j] in wordDict:
                         # print('hit', j)
                         dp[j] = True # 🔑 hit된 마지막 인덱스를 저장해 이전은 확인 안하도록 e.g., applepenapple 의 경우 apple은 다시 체크할 필요 없이 pen 부터 확인
-        return dp[-1]
+        return dp[-1] # 마지막 char가 wordDict에 있으면 True
