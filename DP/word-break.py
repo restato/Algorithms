@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/word-break/
+# https://leetcode.com/problems/word_break/
 
 class Solution(object):
     def wordBreak(self, s, wordDict):
